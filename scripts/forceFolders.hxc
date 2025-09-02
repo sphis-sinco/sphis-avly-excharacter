@@ -1,9 +1,8 @@
 function onAdded()
 {
         var paths = [];
-        var addScriptPath = function(path='') return paths.push('game/mods/ex-character/scripts/$path');
 
-        addScriptPath('characterSelect/thirdCharacter.hxc');
+        paths.push('game/mods/exchar/scripts/characterSelect/thirdCharacter.hxc');
 
-        ScriptManager.loadScriptsByPaths(paths)
+        ScriptManager.loadScriptsByPaths(paths);
 }

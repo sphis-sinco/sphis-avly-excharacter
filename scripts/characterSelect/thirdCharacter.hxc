@@ -1,7 +1,70 @@
+import flixel.FlxSprite;
+import flixel.FlxG;
+
+var seay:FlxSprite;
+var seayGhost:FlxSprite;
+
 function onCreate() {
         if (Script.state == 'CharacterSelect')
         {
                 CharacterSelect.reos.scale.set(0.5, 0.5);
                 CharacterSelect.habo.scale.set(0.5, 0.5);
+
+                seay = new FlxSprite();
+		seay.antialiasing = true;
+
+                seayGhost = new FlxSprite();
+		seayGhost.antialiasing = true;
+                seayGhost.loadGraphic(Paths.getGamePath('img/character-select/chars/seay-idle.png'));
+                seayGhost.scale.set(0.5, 0.5);
+		seayGhost.updateHitbox();
+		seayGhost.screenCenter();
+                seayGhost.y += (seayGhost.height / 4);
+                seayGhost.alpha = 0.25;
+
+		// FlxG.state.add(seayGhost);
+		FlxG.state.add(seay);
+        }
+}
+
+function onUpdate(elapsed:Float) {
+        if (Script.state == 'CharacterSelect')
+        {
+                CharacterSelect.reos.loadGraphic(Paths.getGamePath('img/character-select/chars/reos-idle.png'));
+                CharacterSelect.reos.scale.set(0.5, 0.5);
+		CharacterSelect.reos.updateHitbox();
+		CharacterSelect.reos.screenCenter();
+		CharacterSelect.reos.x -= CharacterSelect.reos.width / 1;
+                CharacterSelect.reos.y -= (CharacterSelect.reos.height / 4);
+                
+		CharacterSelect.habo.loadGraphic(Paths.getGamePath('img/character-select/chars/habo-idle.png'));
+                CharacterSelect.habo.scale.set(0.5, 0.5);
+		CharacterSelect.habo.updateHitbox();
+		CharacterSelect.habo.screenCenter();
+		CharacterSelect.habo.x += CharacterSelect.habo.width / 1;
+                CharacterSelect.habo.y -= (CharacterSelect.habo.height / 4);
+
+                seay.loadGraphic(Paths.getGamePath('img/character-select/chars/seay-idle.png'));
+                seay.scale.set(0.5, 0.5);
+		seay.updateHitbox();
+		seay.screenCenter();
+                seay.y += (seay.height / 4);
+
+                if (FlxG.mouse.overlaps(CharacterSelect.reos))
+		{
+			CharacterSelect.reos.loadGraphic(Paths.getGamePath('img/character-select/chars/reos-selected.png'));
+			PlayState.player_character = Characters.NORMAL_DIFF;
+		}
+		if (FlxG.mouse.overlaps(CharacterSelect.habo))
+		{
+			CharacterSelect.habo.loadGraphic(Paths.getGamePath('img/character-select/chars/habo-selected.png'));
+			PlayState.player_character = Characters.HARD_DIFF;
+		}
+		if (FlxG.mouse.overlaps(seay))
+		{
+			seay.loadGraphic(Paths.getGamePath('img/character-select/chars/seay-selected.png'));
+                        seay.x += (seay.width / 4);
+			PlayState.player_character = 'seay';
+		}
         }
 }

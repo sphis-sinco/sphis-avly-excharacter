@@ -15,7 +15,7 @@ function onCreate() {
 
                 seayGhost = new FlxSprite();
 		seayGhost.antialiasing = true;
-                seayGhost.loadGraphic(Paths.getGamePath('img/character-select/chars/seay-idle.png'));
+                seayGhost.loadGraphic('game/mods/ex-character/img/character-select/chars/seay-idle.png');
                 seayGhost.scale.set(0.5, 0.5);
 		seayGhost.updateHitbox();
 		seayGhost.screenCenter();
@@ -44,7 +44,7 @@ function onUpdate(elapsed:Float) {
 		CharacterSelect.habo.x += CharacterSelect.habo.width / 1;
                 CharacterSelect.habo.y -= (CharacterSelect.habo.height / 4);
 
-                seay.loadGraphic(Paths.getGamePath('img/character-select/chars/seay-idle.png'));
+                seay.loadGraphic('game/mods/ex-character/img/character-select/chars/seay-idle.png');
                 seay.scale.set(0.5, 0.5);
 		seay.updateHitbox();
 		seay.screenCenter();
@@ -62,7 +62,7 @@ function onUpdate(elapsed:Float) {
 		}
 		if (FlxG.mouse.overlaps(seay))
 		{
-			seay.loadGraphic(Paths.getGamePath('img/character-select/chars/seay-selected.png'));
+			seay.loadGraphic('game/mods/ex-character/img/character-select/chars/seay-selected.png');
                         seay.x += (seay.width / 4);
 			PlayState.player_character = 'seay';
 		}

@@ -2,7 +2,7 @@ function onAdded()
 {
         var paths = [];
 
-        paths.push('game/mods/exchar/scripts/characterSelect/thirdCharacter.hxc');
+        paths.push('game/mods/ex-character/scripts/characterSelect/thirdCharacter.hxc');
 
         ScriptManager.loadScriptsByPaths(paths);
 }
